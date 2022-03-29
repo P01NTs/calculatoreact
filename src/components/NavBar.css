@@ -1,0 +1,28 @@
+.nav-container {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  justify-content: space-around;
+  background-color: #222422;
+}
+.nav-container > li {
+  list-style-type: none;
+  height: 100%;
+  display: flex;
+}
+
+.nav-container > li > a {
+  height: 100%;
+  color: #fff;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+.nav-container > li > a:hover {
+  color: rgb(158, 117, 163);
+}
