@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import "./Calculator.css";
+import Result from "./Result";
 
 function Calculator() {
   const [result, setresult] = useState("");
 
+  const clickBtn = () => {
+  };
+
+  document.addEventListener("keyup", (e) => {
+  
+  });
+
   const handleClick = (e) => {
-    result == "Error" || result == "0"
+    result === "Error" || result === "0"
       ? setresult(e.target.name)
       : setresult(result.concat(e.target.name));
   };
@@ -28,18 +36,15 @@ function Calculator() {
 
   return (
     <div className="container">
-      <input
-        type="text"
-        readOnly="readOnly"
-        className="result"
-        value={result || "0"}
-      />
+      <Result result={result} />
       <div className="calculator">
         <button id="ac" className="twoSpan" onClick={clear}>
           AC
         </button>
-        <button id="del" onClick={del}>DEL</button>
-        <button name="/" onClick={handleClick}>
+        <button id="del" onClick={del}>
+          DEL
+        </button>
+        <button id="/" name="/" onClick={handleClick}>
           /
         </button>
         <button name="7" onClick={handleClick}>
@@ -84,7 +89,7 @@ function Calculator() {
         <button name="." onClick={handleClick}>
           .
         </button>
-        <button id="eval"className="twoSpan" onClick={evaluate}>
+        <button id="eval" className="twoSpan" onClick={evaluate}>
           =
         </button>
       </div>
