@@ -3,6 +3,9 @@
   grid-template-columns: repeat(4, 6rem);
   grid-template-rows: repeat(5, 6rem);
 }
+#focussed:focus{
+  background-color: #fff;
+}
 .calculator > button {
   border: none;
   appearance: none;

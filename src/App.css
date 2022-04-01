@@ -6,15 +6,16 @@
   margin: 0 0;
   padding: 0;
 }
+
 body {
   margin: 0;
   padding: 0;
+  background-color: #191A19;
 }
-.wrapper {
-  height: 100vh;
-  background-color: #191A19 ;
-  color: white;
-}
+
+
+
 .container {
-    margin: 3.125rem auto;
+  margin: 3.125rem auto;
+  color: white;
 }

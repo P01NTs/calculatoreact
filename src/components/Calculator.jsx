@@ -1,16 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Calculator.css";
-import Result from "./Result";
 
 function Calculator() {
   const [result, setresult] = useState("");
-
-  const clickBtn = () => {
+  const listArr = [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "/",
+    "*",
+    "+",
+    "-",
+  ];
+  const handleKeyDown = (e) => {
+    if (!(listArr.indexOf(e.key) == -1)) {
+      result === "Error" || result === "0"
+        ? setresult(e.key)
+        : setresult(result.concat(e.key));
+    }
+    switch (e.key) {
+      case "Enter":
+        evaluate();
+        break;
+      case "Backspace":
+        del();
+        break;
+      case "Escape":
+        clear();
+        break;
+      default:
+        break;
+    }
   };
-
-  document.addEventListener("keyup", (e) => {
-  
-  });
 
   const handleClick = (e) => {
     result === "Error" || result === "0"
@@ -34,9 +62,24 @@ function Calculator() {
     }
   };
 
+  const forceFocused = () => {
+    document.getElementById("focused").focus();
+  };
+  useEffect(() => {
+    document.getElementById("focused").focus();
+  });
+
   return (
     <div className="container">
-      <Result result={result} />
+      <input
+        id="focused"
+        onBlur={forceFocused}
+        onKeyDown={handleKeyDown}
+        readOnly={true}
+        type="text"
+        className="result"
+        value={result}
+      />
       <div className="calculator">
         <button id="ac" className="twoSpan" onClick={clear}>
           AC
