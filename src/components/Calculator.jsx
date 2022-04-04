@@ -20,14 +20,16 @@ function Calculator() {
     "-",
   ];
   const handleKeyDown = (e) => {
+    console.log(e.key);
     if (!(listArr.indexOf(e.key) == -1)) {
       result === "Error" || result === "0"
         ? setresult(e.key)
-        : setresult(result.concat(e.key));
+        : setresult(result + e.key);
     }
     switch (e.key) {
       case "Enter":
-        evaluate();
+        result === "Error" || result === "0" ? setresult("") : evaluate();
+
         break;
       case "Backspace":
         del();
@@ -55,26 +57,27 @@ function Calculator() {
   };
 
   const evaluate = () => {
-    try {
-      setresult(eval(result).toString());
-    } catch (error) {
-      setresult("Error");
+    if (result == "Error" || result == "0") {
+      setresult("");
+    } else {
+      try {
+        setresult(eval(result).toString());
+      } catch (error) {
+        setresult("Error");
+      }
     }
   };
-
-  const forceFocused = () => {
-    document.getElementById("focused").focus();
-  };
   useEffect(() => {
-    document.getElementById("focused").focus();
+    document.getElementById("input").focus();
   });
 
   return (
     <div className="container">
       <input
-        id="focused"
-        onBlur={forceFocused}
-        onKeyDown={handleKeyDown}
+        id="input"
+        onBlur={() => document.getElementById("input").focus()}
+        tabIndex={1}
+        onKeyPress={handleKeyDown}
         readOnly={true}
         type="text"
         className="result"
